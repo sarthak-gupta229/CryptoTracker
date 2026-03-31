@@ -3,11 +3,81 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="output.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
+
   <body>
-    <h1 class="text-3xl font-bold underline">HI</h1>
+    <div id="main">
+      <div id="sidebar">
+        <div>
+          <h3>CRYTO VAULT</h3>
+        </div>
+        <ul id="navlinks">
+          <a href="index.html"><li>Home</li></a>
+          <a href="portolio.html"><li>Portolio</li></a>
+        </ul>
+      </div>
+      <div id="home">
+        <div id="nav">
+          <div id="searchbar">
+            <span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-search-icon lucide-search"
+              >
+                <path d="m21 21-4.34-4.34" />
+                <circle cx="11" cy="11" r="8" /></svg
+            ></span>
+            <span>
+              <input
+                type="text"
+                id="search"
+                name="search"
+                value=""
+                placeholder="Search Cryto"
+              />
+            </span>
+          </div>
+        </div>
+        <div id="container">
+          <div id="trending">
+            <span
+              ><h2 id="trendingheading">
+                Cryptocurrency Prices by Market Cap
+              </h2></span
+            >
+            <!-- <span><button onclick="fetchTrending()">Get Data</button></span> -->
+            
+            <!-- <div class="trendingcard"></div> -->
+          </div>
+          <div  id="dataheading">
+            <p style="width:40px; text-align:center">#</p>
+            <p style="height:30px; width:30px;">Coin</p>
+            <span style="width:180px; ">
+              <p style="margin:1px"></p>
+            </span>
+            <p style="width:180px;">Price</p>
+            <p style="width:120px;">24h</p>
+            <p style="width:120px; ">24h Volume</p>
+            <p style="width:160px;">Market Cap	</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

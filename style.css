@@ -1,3 +1,112 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+#main {
+  display: flex;
+  font-family: "Manrope", sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #334155;
+  font-weight: bold;
+}
+
+a:hover {
+}
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #f8fafc;
+  height: 100vh;
+  width: 21vw;
+
+  position: fixed;
+}
+#sidebar h3 {
+  color: #064e3b;
+}
+
+#navlinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+#navlinks li {
+  color: #334155;
+  font-weight: bold;
+}
+#navlinks a {
+  padding: 1rem;
+  border-radius: 10px;
+}
+#navlinks a:hover {
+  background-color: #e1e3e5;
+  color: #059669;
+  text-decoration: underline;
+}
+#nav {
+  z-index: 99;
+  position: fixed;
+  width: 100%;
+  padding: 1rem 0 1rem 1rem;
+  top: 0;
+  background-color: white;
+  /* background: rgba(255, 255, 255, 0.654);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(10px); */
+}
+#search {
+  border: none;
+  background-color: #e1e3e5;
+  outline: none;
+  width: 35vw;
+}
+#home {
+  padding: 5px;
+  padding-top: 3rem;
+  width: 100%;
+  margin-left: 23vw;
+}
+#searchbar {
+  background-color: #e1e3e5;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  width: 40vw;
+}
+#trendingheading {
+  color: #1a1c1e;
+  background-color: white;
+}
+#trending {
+  background-color: white;
+}
+#container {
+  background-color: white;
+}
+
+#container h2 {
+  border-bottom: 1px solid #e1e3e5;
+  padding-bottom: 1rem;
+}
+.trendingcard {
+  border-bottom: 1px solid #e1e3e5;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+#dataheading {
+  border: 1px solid #e1e3e5;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  position: sticky;
+  top: 4.5rem;
+  background-color: white;
+
+}
