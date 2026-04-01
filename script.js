@@ -32,3 +32,19 @@ async function fetchTrending() {
   }
 }
 fetchTrending()
+
+
+async function fetchGlobalStats(){
+    try{
+        let res= await fetch("https://api.coingecko.com/api/v3/global")
+        let json= await res.json()
+        let data=json.data
+        console.log(data)
+        let 
+        
+    }catch(err){
+         console.log(err)
+    }
+    
+}
+fetchGlobalStats()
