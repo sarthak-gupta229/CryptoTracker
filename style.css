@@ -64,6 +64,9 @@ a:hover {
   background: rgba(255, 255, 255, 0.654);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 #search {
   border: none;
@@ -117,6 +120,11 @@ background-color: white;
 .trendingcard:hover{
     background-color: #f8fafc;
 }
+.sparkline-chart {
+  width: 120px !important;
+  height: 40px !important;
+  flex-shrink: 0;
+}
 #dataheading {
   border: 1px solid #e1e3e5;
   padding: 0.25rem;
@@ -129,6 +137,120 @@ background-color: white;
   background-color: white;
 
 }
+
+#stats-bar{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5vw;
+    padding: 3rem;
+}
+#stats-bar p{
+  color: #444749;
+}
+#statscad{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+#err{
+  text-align: center;
+}
+
+
+#highlight-cards {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.5rem 2rem 0.5rem;
+  flex-wrap: wrap;
+}
+.highlight-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.25rem 1.25rem 1rem;
+  flex: 1;
+  min-width: 220px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.hc-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.hc-coin-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.hc-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  padding: 4px;
+  object-fit: contain;
+}
+.hc-name { 
+  font-weight: 700; 
+  font-size: 0.95rem; 
+  color: #1a1c1e; margin: 0; }
+.hc-label { font-size: 0.75rem; color: #94a3b8; margin: 2px 0 0; }
+.hc-price-info { text-align: right; }
+.hc-price { font-weight: 700; font-size: 0.95rem; color: #1a1c1e; margin: 0; }
+.hc-change { font-size: 0.82rem; font-weight: 600; margin: 2px 0 0; }
+.hc-chart-wrap { height: 80px; width: 100%; }
+.hc-canvas { width: 100% !important; height: 100% !important; }
+
+#search-result {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  box-sizing: border-box;
+}
+
+.searched-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  gap: 2rem;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.07);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.left-data {
+  width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-right: 1px solid #e1e3e5;
+  padding-right: 2rem;
+}
+
+.right-graph {
+  flex: 1;
+  min-width: 0;
+  height: 400px;
+  position: relative;
+}
+
+.right-graph canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+
+
 
 
 @media (max-width: 768px) {

@@ -8,18 +8,64 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <title>Crypto Vault</title>
   </head>
 
   <body>
     <div id="main">
       <div id="sidebar">
         <div>
-          <h3>CRYTO VAULT</h3>
+          <h3 style="display: flex; gap: 0.5rem; align-items: center">
+            <img src="./public/logo.png" width="40" height="40" />CRYTO VAULT
+          </h3>
         </div>
         <ul id="navlinks">
-          <a href="index.html" class="active"><li>Home</li></a>
-          <a href="portolio.html"><li>Portolio</li></a>
+          <a href="index.html" class="active"
+            ><li style="display: flex; gap: 1rem">
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-layout-grid-icon lucide-layout-grid"
+                >
+                  <rect width="7" height="7" x="3" y="3" rx="1" />
+                  <rect width="7" height="7" x="14" y="3" rx="1" />
+                  <rect width="7" height="7" x="14" y="14" rx="1" />
+                  <rect width="7" height="7" x="3" y="14" rx="1" />
+                </svg> </span
+              >Home
+            </li></a
+          >
+          <a href="portolio.html">
+            <li style="display: flex; gap: 1rem">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-wallet-icon lucide-wallet"
+                >
+                  <path
+                    d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"
+                  />
+                  <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" />
+                </svg> </span
+              >Portfolio
+            </li>
+          </a>
         </ul>
       </div>
       <div id="home">
@@ -51,8 +97,39 @@
               />
             </span>
           </div>
+          <button
+            style="
+              padding: 10px 10px 10px 10px;
+              border-radius: 5px;
+              border: none;
+              background-color: #059669;
+              color: white;
+            "
+            onclick="searchCrypto()"
+          >
+            Search
+          </button>
         </div>
-        <div id="m"></div>
+        <div id="search-result"></div>
+        <div id="stats-bar">
+          <div class="statscad">
+            <p>Market Cap</p>
+            <h2 id="Market-Cap"></h2>
+          </div>
+          <div class="statscad">
+            <p>24h Change</p>
+            <h2 id="Change"></h2>
+          </div>
+          <div class="statscad">
+            <p>Volume</p>
+            <h2 id="volume"></h2>
+          </div>
+          <div class="statscad">
+            <p>BTC Dominance</p>
+            <h2 id="dominance"></h2>
+          </div>
+        </div>
+        <div id="highlight-cards"></div>
         <div id="container">
           <div id="trending">
             <span
@@ -74,11 +151,14 @@
             <p style="width: 120px">24h</p>
             <p style="width: 120px">24h Volume</p>
             <p style="width: 160px">Market Cap</p>
+            <p style="width: 160px">Last 7 Days</p>
           </div>
+          <div id="err"></div>
         </div>
       </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
