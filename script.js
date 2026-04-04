@@ -354,7 +354,7 @@ async function searchCrypto() {
     </div>
     </div>
     </div>
-    <div class="right-graph" style="flex:1; min-width:0; height:400px; position:relative;">
+    <div class="right-graph" style="flex:1; min-width:0; height:400px; position:relative; display:flex; align-items:center; justify-content:center;">
     <canvas id="search-graph" style="width:100%;height:100%;"></canvas>
     </div>
     </div>
