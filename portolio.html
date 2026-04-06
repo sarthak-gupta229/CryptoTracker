@@ -69,8 +69,49 @@
         </ul>
       </div>
       <div id="home">
-        <div>
-          <div></div>
+        <div id="nav">
+          <div style="display: flex; gap: 1rem">
+            <div id="searchbar">
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-search-icon lucide-search"
+                >
+                  <path d="m21 21-4.34-4.34" />
+                  <circle cx="11" cy="11" r="8" /></svg
+              ></span>
+              <span>
+                <input
+                  type="text"
+                  id="search"
+                  name="search"
+                  value=""
+                  placeholder="Search Cryto"
+                />
+              </span>
+            </div>
+            <button
+              style="
+                padding: 10px 10px 10px 10px;
+                border-radius: 5px;
+                border: none;
+                background-color: #059669;
+                color: white;
+              "
+              onclick="searchCrypto()"
+            >
+              Search
+            </button>
+          </div>
+          <button id="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
         </div>
       </div>
     </div>
