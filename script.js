@@ -182,11 +182,11 @@ async function searchCrypto() {
     </div>
     <div style="display:flex; align-items:center; gap:10px; border-bottom: 1px solid #e1e3e5; justify-content: space-between;">
     <p>Total Supply:</p>
-    <p>${data.market_data.total_supply.toFixed(2)}</p>
+    <p>$${data.market_data.total_supply.toFixed(2)}</p>
     </div>
     <div style="display:flex; align-items:center; gap:10px; border-bottom: 1px solid #e1e3e5; justify-content: space-between;">
     <p>Circulating Supply:</p>
-    <p>${data.market_data.circulating_supply.toFixed(2)}</p>
+    <p>$${data.market_data.circulating_supply.toFixed(2)}</p>
     </div>
     </div>
     </div>
