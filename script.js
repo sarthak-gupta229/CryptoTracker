@@ -241,6 +241,8 @@ function toggleFavorite(id) {
   }
 }
 
+let currentFavoritesData = [];
+
 async function renderFavoritesList() {
   const container = document.getElementById("favorites-list");
   if (!container) return;
@@ -254,32 +256,47 @@ async function renderFavoritesList() {
   try {
     let res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${favs.join(',')}`);
     let data = await res.json();
-    
-    container.innerHTML = "";
-    data.forEach(obj => {
-      let isPositive = obj.price_change_percentage_24h >= 0;
-      let div = document.createElement("div");
-      div.className = "portfolio-item";
-      div.innerHTML = `
-        <div style="flex: 2; min-width: 200px; display: flex; align-items: center; gap: 10px;">
-          <img src="${obj.image}" style="width: 32px; height: 32px; border-radius: 50%;" />
-          <div style="display: flex; flex-direction: column;">
-            <p style="margin: 0; font-weight: bold; font-size: 1rem;">${obj.name}</p>
-            <p style="margin: 0; font-size: 0.8rem; color: gray; text-transform: uppercase;">${obj.symbol}</p>
-          </div>
-        </div>
-        <p style="flex: 1; text-align: right; margin: 0;">0.00 ${obj.symbol.toUpperCase()}</p>
-        <p style="flex: 1; text-align: right; margin: 0;">$${obj.current_price.toLocaleString()}</p>
-        <p style="flex: 1; text-align: right; margin: 0; font-weight: bold;">$0.00</p>
-        <p style="flex: 1; text-align: right; margin: 0; color: ${isPositive ? '#00d084' : '#ef4444'};">
-          ${isPositive ? '+' : ''}${obj.price_change_percentage_24h?.toFixed(2)}%
-        </p>
-      `;
-      container.appendChild(div);
-    });
+    currentFavoritesData = data;
+    displayFavorites(currentFavoritesData);
   } catch (error) {
     container.innerHTML = `<p style="text-align:center; padding: 2rem; color: red;">Failed to fetch favorite assets.</p>`;
   }
+}
+
+function displayFavorites(data) {
+  const container = document.getElementById("favorites-list");
+  if (!container) return;
+  container.innerHTML = "";
+  data.forEach(obj => {
+    let isPositive = obj.price_change_percentage_24h >= 0;
+    let div = document.createElement("div");
+    div.className = "portfolio-item";
+    div.innerHTML = `
+      <div style="flex: 2; min-width: 200px; display: flex; align-items: center; gap: 10px;">
+        <img src="${obj.image}" style="width: 32px; height: 32px; border-radius: 50%;" />
+        <div style="display: flex; flex-direction: column;">
+          <p style="margin: 0; font-weight: bold; font-size: 1rem;">${obj.name}</p>
+          <p style="margin: 0; font-size: 0.8rem; color: gray; text-transform: uppercase;">${obj.symbol}</p>
+        </div>
+      </div>
+      <p style="flex: 1; text-align: right; margin: 0;">$${obj.current_price.toLocaleString()}</p>
+      <p style="flex: 1; text-align: right; margin: 0; color: ${isPositive ? '#00d084' : '#ef4444'};">
+        ${isPositive ? '+' : ''}${obj.price_change_percentage_24h?.toFixed(2)}%
+      </p>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function sortFavorites(order) {
+  if (currentFavoritesData.length === 0) return;
+  let sortedData = [...currentFavoritesData];
+  if (order === 'asc') {
+      sortedData.sort((a, b) => a.current_price - b.current_price);
+  } else if (order === 'desc') {
+      sortedData.sort((a, b) => b.current_price - a.current_price);
+  }
+  displayFavorites(sortedData);
 }
 
 renderFavoritesList();
