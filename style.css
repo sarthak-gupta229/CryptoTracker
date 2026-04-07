@@ -431,7 +431,6 @@ body.dark-mode {
   background-color: #1e2023 !important;
   border: 1px solid #2d3034;
   border-radius: 12px;
-  overflow: hidden;
   padding-bottom: 1rem;
 }
 
@@ -477,3 +476,39 @@ body.dark-mode {
   stroke: #00d084;
   color: #00d084;
 }
+
+.portfolio-container {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e1e3e5;
+}
+.portfolio-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e1e3e5;
+}
+.portfolio-item:last-child {
+  border-bottom: none;
+}
+.dark-mode .portfolio-container {
+  background-color: #1e2023 !important;
+  border: 1px solid #2d3034 !important;
+}
+.dark-mode #portfolio-heading {
+  border-bottom: 1px solid #2d3034 !important;
+  color: #a7abb3 !important;
+}
+.dark-mode .portfolio-item {
+  border-bottom: 1px solid #2d3034 !important;
+  color: #ffffff;
+}
+.dark-mode .portfolio-item p {
+  color: #ffffff !important;
+}
+.dark-mode #portfolio-wrapper h2 {
+  color: #ffffff !important;
+}
+

@@ -113,6 +113,31 @@
           </div>
           <button id="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
         </div>
+        
+        <div id="portfolio-wrapper" style="padding: 2rem; margin-top: 5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h2 style="text-transform: uppercase; font-size: 1.2rem; letter-spacing: 1px;">Asset Holdings</h2>
+            <div style="display: flex; gap: 1rem; font-size: 0.9rem; color: gray;">
+              <span style="cursor:pointer">≡ Filter</span>
+              <span style="cursor:pointer">↓ Export</span>
+            </div>
+          </div>
+          
+          <div class="portfolio-container" id="port-container">
+            <div id="portfolio-heading" style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: bold; color: gray; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e1e3e5; text-transform: uppercase;">
+              <p style="flex: 2; min-width: 200px;">Asset Name</p>
+              <p style="flex: 1; text-align: right;">Balance (Mock)</p>
+              <p style="flex: 1; text-align: right;">Current Price</p>
+              <p style="flex: 1; text-align: right;">Market Value</p>
+              <p style="flex: 1; text-align: right;">24H Change</p>
+            </div>
+            
+            <div id="favorites-list" style="display: flex; flex-direction: column;">
+               <p style="text-align:center; padding: 2rem; color: gray;">Loading favorites...</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 

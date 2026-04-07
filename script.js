@@ -11,7 +11,9 @@ async function fetchTrending() {
     data.forEach((obj) => {
       let card = document.createElement("div");
       card.className = "trendingcard";
+      let isFav = getFavorites().includes(obj.id);
       card.innerHTML = `
+        <span id="star-${obj.id}" onclick="toggleFavorite('${obj.id}')" style="cursor:pointer; width: 20px; text-align: center; font-size: 1.2rem; color: ${isFav ? '#eab308' : 'inherit'};">${isFav ? '★' : '☆'}</span>
         <p style="width:40px; text-align:center">${obj.market_cap_rank}</p>
         <img src="${obj.image}" style="height:30px; width:30px;"/>
         <span style="width:180px; display:flex; flex-direction:column;">
@@ -218,3 +220,67 @@ if (themeBtn) {
     }
   });
 }
+
+function getFavorites() {
+  return JSON.parse(localStorage.getItem('favorites')) || [];
+}
+
+function toggleFavorite(id) {
+  let favs = getFavorites();
+  if (favs.includes(id)) {
+    favs = favs.filter(f => f !== id);
+  } else {
+    favs.push(id);
+  }
+  localStorage.setItem('favorites', JSON.stringify(favs));
+  const star = document.getElementById(`star-${id}`);
+  if (star) {
+    let isFav = favs.includes(id);
+    star.innerText = isFav ? '★' : '☆';
+    star.style.color = isFav ? '#eab308' : 'inherit';
+  }
+}
+
+async function renderFavoritesList() {
+  const container = document.getElementById("favorites-list");
+  if (!container) return;
+  
+  const favs = getFavorites();
+  if (favs.length === 0) {
+    container.innerHTML = `<p style="text-align:center; padding: 2rem; color: gray;">No favorite assets found. Add some from the Home page!</p>`;
+    return;
+  }
+  
+  try {
+    let res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${favs.join(',')}`);
+    let data = await res.json();
+    
+    container.innerHTML = "";
+    data.forEach(obj => {
+      let isPositive = obj.price_change_percentage_24h >= 0;
+      let div = document.createElement("div");
+      div.className = "portfolio-item";
+      div.innerHTML = `
+        <div style="flex: 2; min-width: 200px; display: flex; align-items: center; gap: 10px;">
+          <img src="${obj.image}" style="width: 32px; height: 32px; border-radius: 50%;" />
+          <div style="display: flex; flex-direction: column;">
+            <p style="margin: 0; font-weight: bold; font-size: 1rem;">${obj.name}</p>
+            <p style="margin: 0; font-size: 0.8rem; color: gray; text-transform: uppercase;">${obj.symbol}</p>
+          </div>
+        </div>
+        <p style="flex: 1; text-align: right; margin: 0;">0.00 ${obj.symbol.toUpperCase()}</p>
+        <p style="flex: 1; text-align: right; margin: 0;">$${obj.current_price.toLocaleString()}</p>
+        <p style="flex: 1; text-align: right; margin: 0; font-weight: bold;">$0.00</p>
+        <p style="flex: 1; text-align: right; margin: 0; color: ${isPositive ? '#00d084' : '#ef4444'};">
+          ${isPositive ? '+' : ''}${obj.price_change_percentage_24h?.toFixed(2)}%
+        </p>
+      `;
+      container.appendChild(div);
+    });
+  } catch (error) {
+    container.innerHTML = `<p style="text-align:center; padding: 2rem; color: red;">Failed to fetch favorite assets.</p>`;
+  }
+}
+
+renderFavoritesList();
+
